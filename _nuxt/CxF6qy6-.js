@@ -1,4 +1,4 @@
-import{a as S,e as k,c as z,V as F,f as te,u as ie,g as oe,h as ae,i as le,m as de,j as re,k as se,l as ne,n as ce}from"./1kmFJbFs.js";import{f as pe,c as y,o as s,b as t,w as i,d as c,e as x,g as h,a as p,t as b,_ as R,p as E,h as v,i as fe,j as ue,k as M,l as xe,m as be,q as H,n as j,s as ge,I as me,v as A,F as N,r as O,x as ve,u as ye,y as r}from"./BCw2_ffP.js";import{V as D}from"./Bvj28mmd.js";import{u as he,c as ke,d as Ce,e as we,m as _e,f as Se,g as ze,h as Fe,i as Ve,b as L,j as q,V,a as _}from"./CfmgWgyq.js";import{V as Ge,a as Te}from"./BsTd46mk.js";import{a as Ie,V as Le}from"./CqPjITgv.js";import"./Dzg6M2cq.js";const Pe={class:"code-block"},$e={class:"code-content"},Be={class:"code-content"},Me=pe({__name:"CodeBlock",props:{htmlCode:{type:String,required:!0},cssCode:{type:String,required:!0},showCopy:{type:Boolean,default:!1}},setup(e){const l=async f=>{try{await navigator.clipboard.writeText(f)}catch(o){console.error("Failed to copy: ",o)}};return(f,o)=>(s(),y("div",Pe,[t(F,{variant:"outlined",class:"mb-2"},{default:i(()=>[t(S,{class:"text-subtitle-2"},{default:i(()=>[o[2]||(o[2]=c(" HTML ",-1)),t(D),e.showCopy?(s(),x(k,{key:0,icon:"mdi-content-copy",size:"small",onClick:o[0]||(o[0]=a=>l(e.htmlCode))})):h("",!0)]),_:1}),t(z,null,{default:i(()=>[p("pre",$e,[p("code",null,b(e.htmlCode),1)])]),_:1})]),_:1}),t(F,{variant:"outlined"},{default:i(()=>[t(S,{class:"text-subtitle-2"},{default:i(()=>[o[3]||(o[3]=c(" CSS ",-1)),t(D),e.showCopy?(s(),x(k,{key:0,icon:"mdi-content-copy",size:"small",onClick:o[1]||(o[1]=a=>l(e.cssCode))})):h("",!0)]),_:1}),t(z,null,{default:i(()=>[p("pre",Be,[p("code",null,b(e.cssCode),1)])]),_:1})]),_:1})]))}}),He=Object.assign(R(Me,[["__scopeId","data-v-36b31ce0"]]),{__name:"CodeBlock"}),P=te("v-alert-title"),je=E({iconSize:[Number,String],iconSizes:{type:Array,default:()=>[["x-small",10],["small",16],["default",24],["large",28],["x-large",32]]}},"iconSize");function Ae(e,l){return{iconSize:v(()=>{const o=new Map(e.iconSizes),a=e.iconSize??l()??"default";return o.has(a)?o.get(a):a})}}const De=["success","info","warning","error"],qe=E({border:{type:[Boolean,String],validator:e=>typeof e=="boolean"||["top","end","bottom","start"].includes(e)},borderColor:String,closable:Boolean,closeIcon:{type:me,default:"$close"},closeLabel:{type:String,default:"$vuetify.close"},icon:{type:[Boolean,String,Function,Object],default:null},modelValue:{type:Boolean,default:!0},prominent:Boolean,title:String,text:String,type:{type:String,validator:e=>De.includes(e)},...Ve(),...ne(),...Fe(),...ze(),...je(),...se(),...re(),...Se(),..._e(),...ge(),...de({variant:"flat"})},"VAlert"),J=fe()({name:"VAlert",props:qe(),emits:{"click:close":e=>!0,"update:modelValue":e=>!0},setup(e,l){let{emit:f,slots:o}=l;const a=ue(e,"modelValue"),g=M(()=>{if(e.icon!==!1)return e.type?e.icon??`$${e.type}`:e.icon}),{iconSize:m}=Ae(e,()=>e.prominent?44:void 0),{themeClasses:C}=xe(e),{colorClasses:G,colorStyles:T,variantClasses:n}=ie(()=>({color:e.color??e.type,variant:e.variant})),{densityClasses:d}=oe(e),{dimensionStyles:w}=he(e),{elevationClasses:u}=ke(e),{locationStyles:U}=ae(e),{positionClasses:K}=le(e),{roundedClasses:Q}=Ce(e),{textColorClasses:W,textColorStyles:X}=we(()=>e.borderColor),{t:Y}=be(),$=M(()=>({"aria-label":Y(e.closeLabel),onClick(I){a.value=!1,f("click:close",I)}}));return()=>{const I=!!(o.prepend||g.value),Z=!!(o.title||e.title),ee=!!(o.close||e.closable),B={density:e.density,icon:g.value,size:e.iconSize||e.prominent?m.value:void 0};return a.value&&t(e.tag,{class:j(["v-alert",e.border&&{"v-alert--border":!!e.border,[`v-alert--border-${e.border===!0?"start":e.border}`]:!0},{"v-alert--prominent":e.prominent},C.value,G.value,d.value,u.value,K.value,Q.value,n.value,e.class]),style:H([T.value,w.value,U.value,e.style]),role:"alert"},{default:()=>[ce(!1,"v-alert"),e.border&&p("div",{key:"border",class:j(["v-alert__border",W.value]),style:H(X.value)},null),I&&p("div",{key:"prepend",class:"v-alert__prepend"},[o.prepend?t(q,{key:"prepend-defaults",disabled:!g.value,defaults:{VIcon:{...B}}},o.prepend):t(L,A({key:"prepend-icon"},B),null)]),p("div",{class:"v-alert__content"},[Z&&t(P,{key:"title"},{default:()=>[o.title?.()??e.title]}),o.text?.()??e.text,o.default?.()]),o.append&&p("div",{key:"append",class:"v-alert__append"},[o.append()]),ee&&p("div",{key:"close",class:"v-alert__close"},[o.close?t(q,{key:"close-defaults",defaults:{VBtn:{icon:e.closeIcon,size:"x-small",variant:"text"}}},{default:()=>[o.close?.({props:$.value})]}):t(k,A({key:"close-btn",icon:e.closeIcon,size:"x-small",variant:"text"},$.value),null)])]})}}}),Re={class:"mb-4 item-description"},Ee={class:"demo-container"},Ne=["innerHTML"],Oe={key:0,class:"mt-4"},Je={__name:"DemoContainer",props:{title:{type:String,required:!0},description:{type:String,required:!0},htmlCode:{type:String,required:!0},cssCode:{type:String,required:!0},problems:{type:Array,default:()=>[]},benefits:{type:Array,default:()=>[]}},setup(e){const l=e,f=v(()=>{const o=l.cssCode||"",a=l.htmlCode||"";return`<style>${o}</style>${a}`});return(o,a)=>{const g=He;return s(),x(F,{class:"mb-6"},{default:i(()=>[t(S,null,{default:i(()=>[c(b(l.title),1)]),_:1}),t(z,null,{default:i(()=>[p("p",Re,b(l.description),1),t(g,{"html-code":l.htmlCode,"css-code":l.cssCode,"show-copy":!0},null,8,["html-code","css-code"]),t(F,{variant:"outlined",class:"mt-4"},{default:i(()=>[t(S,{class:"text-subtitle-1"},{default:i(()=>[...a[0]||(a[0]=[c("デモ",-1)])]),_:1}),t(z,null,{default:i(()=>[p("div",Ee,[p("div",{class:"demo-content",innerHTML:f.value},null,8,Ne)])]),_:1})]),_:1}),l.problems?.length||l.benefits?.length?(s(),y("div",Oe,[l.problems?.length?(s(),x(J,{key:0,type:"warning",variant:"outlined",class:"mb-2"},{default:i(()=>[t(P,null,{default:i(()=>[...a[1]||(a[1]=[c("問題点",-1)])]),_:1}),p("ul",null,[(s(!0),y(N,null,O(l.problems,m=>(s(),y("li",{key:m},b(m),1))),128))])]),_:1})):h("",!0)])):h("",!0)]),_:1})]),_:1})}}},Ue=R(Je,[["__scopeId","data-v-5609277b"]]),Ke={key:1},it={__name:"[item]",setup(e){const f=ve().params.item,o=[{id:"block-inline",title:"ブロック要素とインライン要素の違い",description:`
+const i=[{id:"block-inline",title:"ブロック要素とインライン要素の違い",description:`
     ブロック要素とインライン要素は CSS の基本的な表示モデルです。実務ではそれぞれの特徴を理解して使い分けることが重要です。
 
     ブロック要素 (display: block):
@@ -83,20 +83,12 @@ import{a as S,e as k,c as z,V as F,f as te,u as ie,g as oe,h as ae,i as le,m as 
   border: 1px solid rgba(56,142,60,0.15);
 }
 .inline-block-element:first-of-type { width: 200px; }
-`,benefits:["基本的なCSS表示モデルの理解","レイアウトの基礎概念の習得"]},{id:"table-layout",title:"tableタグレイアウト",description:`
+`},{id:"table-layout",title:"tableタグレイアウト",description:`
     table タグを使ったレイアウトは、HTML の表組み表現をレイアウト目的に流用していた手法です。具体的には <table>, <tr>, <td> をページ全体の行・列の枠組みとして使い、セルを幅固定や colspan で分割して見た目を作っていました。
 
     仕組みのポイント:
       - ブラウザはテーブルレイアウトアルゴリズムに基づき、列の幅を調整してセルを配置します（'table-layout: auto' / 'fixed' の挙動差あり）。
       - セルは互いに影響し合うため、あるセルの幅や内容が他のセルのレイアウトに波及します。
-
-    長所:
-      - 当時は複雑な2カラム／3カラム配置を比較的簡単に作れた点。
-
-    短所（後述の問題点につながる）:
-      - semantics（意味的に表ではない情報を表として記述する）を損ない可読性・アクセシビリティが低下する。
-      - レスポンシブ設計や柔軟なレイアウト変更が困難。
-      - テーブルの再計算（reflow）が発生するとパフォーマンスに影響が出やすい。
 
     現在は、同じ見た目をより適切に実現するために Flexbox や Grid、あるいは CSS のブロックレベル要素を組み合わせる手法が推奨されます。
     `,htmlCode:`<table class="layout-table">
@@ -126,7 +118,6 @@ import{a as S,e as k,c as z,V as F,f as te,u as ie,g as oe,h as ae,i as le,m as 
 .sidebar {
   background-color: #f5f5f5;
   padding: 15px;
-  width: 200px;
   vertical-align: top;
 }
 
@@ -141,7 +132,7 @@ import{a as S,e as k,c as z,V as F,f as te,u as ie,g as oe,h as ae,i as le,m as 
   color: white;
   padding: 15px;
   text-align: center;
-}`,problems:["セマンティクスが正しくない（表でないのにtableを使用）","アクセシビリティに問題","レスポンシブ対応が困難","HTMLとCSSの役割分離ができていない"]},{id:"table-problems",title:"tableレイアウトの問題点",description:`
+}`},{id:"table-problems",title:"tableレイアウトの問題点",description:`
     table レイアウトの主な問題点と、なぜ現代では避けられる傾向にあるかを整理します。
 
     1) セマンティクスの欠如
@@ -164,6 +155,8 @@ import{a as S,e as k,c as z,V as F,f as te,u as ie,g as oe,h as ae,i as le,m as 
     まとめ: table は表データの表示に残すべきであり、ページレイアウト目的には Flexbox や Grid を使う設計が現在のベストプラクティスです。
     `,htmlCode:`<!-- Table レイアウトのページ風デモ -->
 <table class="layout-table-demo" role="presentation">
+  <p>※複数の列がある場合、colgroup を設定しないと列の数に応じて均等な幅に配置されてしまう (= width が無効)</p>
+  <br />
   <tr>
     <td class="header" colspan="2">
       <div class="header-inner">ヘッダー — サイトタイトル / グローバルナビ</div>
@@ -232,7 +225,7 @@ import{a as S,e as k,c as z,V as F,f as te,u as ie,g as oe,h as ae,i as le,m as 
     min-width: 300px; /* 小さな画面で横スクロールが発生するようにする */
   }
 }
-`,problems:["メンテナンス性が低い: tr, td など table tag まみれになる","パフォーマンス問題: table tag で全体を構成すると、 Reflow(動的に dom や css の変更をレンダリングする際の最適化処理) 遅延が起こりやすい","スマートフォンでの表示が困難: 固定幅により横スクロールが発生","セマンティクスの問題（表でないのにtable使用）: SEO にも影響","スクリーンリーダーでの読み上げが困難: スクリーンリーダーでは表として認識されるため、内容が正しく伝わらないことがある"],benefits:["Flexboxを使うことでレスポンシブ対応が容易","適切なHTMLセマンティクス","アクセシビリティの向上"]},{id:"float-layout",title:"floatレイアウト",description:`
+`,problems:["メンテナンス性が低い: tr, td など table tag まみれになる","パフォーマンス問題: table tag で全体を構成すると、 Reflow(動的に dom や css の変更をレンダリングする際の最適化処理) 遅延が起こりやすい","スマートフォンでの表示が困難: 固定幅により横スクロールが発生","セマンティクスの問題（表でないのにtable使用）: SEO にも影響","スクリーンリーダーでの読み上げが困難: スクリーンリーダーでは表として認識されるため、内容が正しく伝わらないことがある"]},{id:"float-layout",title:"floatレイアウト",description:`
     floatレイアウトは、要素に 'float: left' や 'float: right' を指定して横方向に寄せ、隣接するブロックやテキストがその周りに回り込むように配置する手法です。主に以下の仕組みで動作します。
 
     1) フロート要素は通常のブロックフローから除外され、インラインの周りに寄せられる（＝横に並ぶ）。
@@ -282,7 +275,7 @@ import{a as S,e as k,c as z,V as F,f as te,u as ie,g as oe,h as ae,i as le,m as 
   color: white;
   padding: 15px;
   text-align: center;
-}`,benefits:["CSS2で利用可能な手法","tableレイアウトよりセマンティック","比較的理解しやすい概念"]},{id:"float-problems",title:"floatレイアウトの問題点",description:`
+}`},{id:"float-problems",title:"floatレイアウトの問題点",description:`
     floatレイアウトは長年便利に使われてきましたが、いくつかの構造的・実装上の問題を抱えています。主な問題点とその原因、よく使われる対処法をまとめます。
 
     1) 親要素の高さが包含されない（高さ崩れ）
@@ -461,7 +454,7 @@ import{a as S,e as k,c as z,V as F,f as te,u as ie,g as oe,h as ae,i as le,m as 
   padding: 20px;
   background-color: #f5f5f5;
   height: 400px;
-}`,benefits:["ヘッダー固定などの特殊なレイアウトに適している","モーダルやツールチップの実装に有効","z-indexによる重なり順の制御が可能"]},{id:"position-problems",title:"positionレイアウトの問題点",description:`
+}`},{id:"position-problems",title:"positionレイアウトの問題点",description:`
     position プロパティを用いたレイアウト（absolute/relative/fixed/sticky）は強力ですが、実務ではいくつかの落とし穴と運用上の課題が発生しやすく、注意が必要です。主な問題点と対処を整理します。
 
     1) 文書フローから外れることによる予測不能な影響
@@ -675,7 +668,7 @@ import{a as S,e as k,c as z,V as F,f as te,u as ie,g as oe,h as ae,i as le,m as 
   display: flex;
   align-items: center;
   justify-content: center;
-}`,benefits:["レスポンシブ対応が容易","垂直中央揃えが簡単","要素の伸縮が柔軟","等高カラムが自動的に実現","ブラウザサポートが充実","ガップ（隙間）の設定が簡単"]},{id:"grid-layout",title:"Grid Layoutレイアウト",description:`
+}`},{id:"grid-layout",title:"Grid Layoutレイアウト",description:`
     CSS Grid は 2 次元（行と列）を同時に扱える強力なレイアウトシステムです。ページ全体のレイアウトや複雑なグリッド構成を明示的に定義でき、直感的な領域配置が可能です。
 
     主要な考え方:
@@ -801,7 +794,7 @@ import{a as S,e as k,c as z,V as F,f as te,u as ie,g as oe,h as ae,i as le,m as 
   .grid-card.large {
     grid-column: span 1;
   }
-}`,benefits:["2次元レイアウトが可能（行と列を同時制御）","複雑なレイアウトが簡潔に記述できる","grid-template-areasによる直感的な設計","レスポンシブ対応が非常に柔軟","重なりや配置の制御が正確","auto-fit、auto-fillによる自動調整が便利"]},{id:"flex-vs-grid",title:"Flex と Grid の使い分け",description:`
+}`},{id:"flex-vs-grid",title:"Flex と Grid の使い分け",description:`
     Flex と Grid はどちらも強力なレイアウト手段ですが、得意・不得意が異なります。
 
     1) 基本の棲み分け
@@ -847,4 +840,4 @@ import{a as S,e as k,c as z,V as F,f as te,u as ie,g as oe,h as ae,i as le,m as 
 .g-header { grid-area: header; background: #1976d2; color: #fff; padding: 10px; }
 .g-side { grid-area: sidebar; background: #e3f2fd; padding: 12px; }
 .g-main { grid-area: main; background: #fff; padding: 12px; border: 1px solid #ddd; }
-.g-footer { grid-area: footer; background: #424242; color: #fff; padding: 10px; text-align: center; }`,relatedItems:["flexbox-layout","grid-layout"],benefits:["実務での選定基準を理解できる","Grid と Flex の併用パターンを学べる","レスポンシブ設計時の考え方が身につく"]}],a=v(()=>o.find(n=>n.id===f)),g=v(()=>o.findIndex(n=>n.id===f)),m=v(()=>{const n=g.value;return n>0?o[n-1]:null}),C=v(()=>{const n=g.value;return n<o.length-1?o[n+1]:null}),G=v(()=>[{title:"ホーム",to:"/"},{title:"Layout",to:"/layout"},{title:"CSSレイアウトの歴史",to:"/layout/1"},{title:a.value?.title||"不明",disabled:!0}]),T=n=>{const d=o.find(w=>w.id===n);return d?d.title:n};return ye({title:v(()=>a.value?`${a.value.title} - CSS Practice`:"ページが見つかりません - CSS Practice")}),(n,d)=>{const w=Ue;return s(),y("div",null,[r(a)?(s(),y("div",Ke,[t(V,{class:"mb-4"},{default:i(()=>[t(_,{cols:"12"},{default:i(()=>[t(Ge,{items:r(G),divider:"/"},{item:i(({item:u})=>[t(Te,{to:u.to,disabled:u.disabled},{default:i(()=>[c(b(u.title),1)]),_:2},1032,["to","disabled"])]),_:1},8,["items"])]),_:1})]),_:1}),t(w,{title:r(a).title,description:r(a).description,"html-code":r(a).htmlCode,"css-code":r(a).cssCode,problems:r(a).problems,benefits:r(a).benefits},null,8,["title","description","html-code","css-code","problems","benefits"]),r(a).relatedItems?.length?(s(),x(V,{key:0,class:"mt-4"},{default:i(()=>[t(_,{cols:"12"},{default:i(()=>[t(F,null,{default:i(()=>[t(S,null,{default:i(()=>[...d[3]||(d[3]=[c("関連項目",-1)])]),_:1}),t(z,null,{default:i(()=>[t(Ie,null,{default:i(()=>[(s(!0),y(N,null,O(r(a).relatedItems,u=>(s(),x(Le,{key:u,to:`/layout/1/${u}`,color:"primary",variant:"outlined"},{default:i(()=>[c(b(T(u)),1)]),_:2},1032,["to"]))),128))]),_:1})]),_:1})]),_:1})]),_:1})]),_:1})):h("",!0),t(V,{class:"mt-6"},{default:i(()=>[t(_,{cols:"6"},{default:i(()=>[r(m)?(s(),x(k,{key:0,to:`/layout/1/${r(m).id}`,color:"primary",variant:"outlined",block:""},{default:i(()=>[t(L,{left:""},{default:i(()=>[...d[4]||(d[4]=[c("mdi-chevron-left",-1)])]),_:1}),c(" 前: "+b(r(m).title),1)]),_:1},8,["to"])):h("",!0)]),_:1}),t(_,{cols:"6"},{default:i(()=>[r(C)?(s(),x(k,{key:0,to:`/layout/1/${r(C).id}`,color:"primary",block:""},{default:i(()=>[c(" 次: "+b(r(C).title)+" ",1),t(L,{right:""},{default:i(()=>[...d[5]||(d[5]=[c("mdi-chevron-right",-1)])]),_:1})]),_:1},8,["to"])):h("",!0)]),_:1})]),_:1})])):(s(),x(V,{key:0},{default:i(()=>[t(_,{cols:"12"},{default:i(()=>[t(J,{type:"error"},{default:i(()=>[t(P,null,{default:i(()=>[...d[0]||(d[0]=[c("ページが見つかりません",-1)])]),_:1}),d[2]||(d[2]=p("p",null,"指定されたレイアウト項目が見つかりませんでした。",-1)),t(k,{to:"/layout/1",color:"primary",class:"mt-2"},{default:i(()=>[...d[1]||(d[1]=[c(" 項目一覧に戻る ",-1)])]),_:1})]),_:1})]),_:1})]),_:1}))])}}};export{it as default};
+.g-footer { grid-area: footer; background: #424242; color: #fff; padding: 10px; text-align: center; }`,relatedItems:["flexbox-layout","grid-layout"]}];export{i as items};
