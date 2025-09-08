@@ -1,4 +1,4 @@
-const i=[{id:"block-inline",title:"ブロック要素とインライン要素の違い",description:`
+const e=[{id:"block-inline",title:"ブロック要素とインライン要素の違い",description:`
     ブロック要素とインライン要素は CSS の基本的な表示モデルです。実務ではそれぞれの特徴を理解して使い分けることが重要です。
 
     ブロック要素 (display: block):
@@ -22,7 +22,7 @@ const i=[{id:"block-inline",title:"ブロック要素とインライン要素の
       - インライン要素同士の改行や空白の扱い（ホワイトスペース）がレイアウトに影響する。
 
     これらを把握すると、float や position に頼らず、より安定したレイアウトを設計できます。
-    `,htmlCode:`<div class="demo-block">
+    `,demos:[{subtitle:"ブロック要素とインライン要素の違い",htmlCode:`<div class="demo-block">
   <div class="block-element">ブロック要素（div） — 幅いっぱいに広がります</div>
   <p class="note">上の要素はブロック要素なので横幅いっぱいに広がります。</p>
 
@@ -83,7 +83,7 @@ const i=[{id:"block-inline",title:"ブロック要素とインライン要素の
   border: 1px solid rgba(56,142,60,0.15);
 }
 .inline-block-element:first-of-type { width: 200px; }
-`},{id:"table-layout",title:"tableタグレイアウト",description:`
+`}]},{id:"table-layout",title:"tableタグレイアウト",description:`
     table タグを使ったレイアウトは、HTML の表組み表現をレイアウト目的に流用していた手法です。具体的には <table>, <tr>, <td> をページ全体の行・列の枠組みとして使い、セルを幅固定や colspan で分割して見た目を作っていました。
 
     仕組みのポイント:
@@ -91,7 +91,7 @@ const i=[{id:"block-inline",title:"ブロック要素とインライン要素の
       - セルは互いに影響し合うため、あるセルの幅や内容が他のセルのレイアウトに波及します。
 
     現在は、同じ見た目をより適切に実現するために Flexbox や Grid、あるいは CSS のブロックレベル要素を組み合わせる手法が推奨されます。
-    `,htmlCode:`<table class="layout-table">
+    `,demos:[{subtitle:"tableタグレイアウト",htmlCode:`<table class="layout-table">
   <tr>
     <td colspan="2" class="header">ヘッダー</td>
   </tr>
@@ -132,7 +132,7 @@ const i=[{id:"block-inline",title:"ブロック要素とインライン要素の
   color: white;
   padding: 15px;
   text-align: center;
-}`},{id:"table-problems",title:"tableレイアウトの問題点",description:`
+}`}]},{id:"table-problems",title:"tableレイアウトの問題点",description:`
     table レイアウトの主な問題点と、なぜ現代では避けられる傾向にあるかを整理します。
 
     1) セマンティクスの欠如
@@ -153,7 +153,7 @@ const i=[{id:"block-inline",title:"ブロック要素とインライン要素の
       - 既存の table ベースのレイアウトを段階的に置換する際は、まずビューポートの小さい順に可変レイアウトを確保すると移行が楽になります。
 
     まとめ: table は表データの表示に残すべきであり、ページレイアウト目的には Flexbox や Grid を使う設計が現在のベストプラクティスです。
-    `,htmlCode:`<!-- Table レイアウトのページ風デモ -->
+    `,demos:[{subtitle:"tableレイアウトの問題点",htmlCode:`Table レイアウトのページ風デモ
 <table class="layout-table-demo" role="presentation">
   <p>※複数の列がある場合、colgroup を設定しないと列の数に応じて均等な幅に配置されてしまう (= width が無効)</p>
   <br />
@@ -171,7 +171,7 @@ const i=[{id:"block-inline",title:"ブロック要素とインライン要素の
   </tr>
 </table>
 
-<!-- 注意書き（非表示でもよい） -->
+注意書き（非表示でもよい）
 <div class="note">このデモはあえて table を使ったページレイアウトを表現しています。モバイルでは横スクロールや柔軟性の欠如が分かります。</div>`,cssCode:`/* テーブルでページレイアウトを表現するデモ用スタイル */
 .layout-table-demo {
   width: 100%;
@@ -225,7 +225,7 @@ const i=[{id:"block-inline",title:"ブロック要素とインライン要素の
     min-width: 300px; /* 小さな画面で横スクロールが発生するようにする */
   }
 }
-`,problems:["メンテナンス性が低い: tr, td など table tag まみれになる","パフォーマンス問題: table tag で全体を構成すると、 Reflow(動的に dom や css の変更をレンダリングする際の最適化処理) 遅延が起こりやすい","スマートフォンでの表示が困難: 固定幅により横スクロールが発生","セマンティクスの問題（表でないのにtable使用）: SEO にも影響","スクリーンリーダーでの読み上げが困難: スクリーンリーダーでは表として認識されるため、内容が正しく伝わらないことがある"]},{id:"float-layout",title:"floatレイアウト",description:`
+`}],problems:["メンテナンス性が低い: tr, td など table tag まみれになる","パフォーマンス問題: table tag で全体を構成すると、 Reflow(動的に dom や css の変更をレンダリングする際の最適化処理) 遅延が起こりやすい","スマートフォンでの表示が困難: 固定幅により横スクロールが発生","セマンティクスの問題（表でないのにtable使用）: SEO にも影響","スクリーンリーダーでの読み上げが困難: スクリーンリーダーでは表として認識されるため、内容が正しく伝わらないことがある"]},{id:"float-layout",title:"floatレイアウト",description:`
     floatレイアウトは、要素に 'float: left' や 'float: right' を指定して横方向に寄せ、隣接するブロックやテキストがその周りに回り込むように配置する手法です。主に以下の仕組みで動作します。
 
     1) フロート要素は通常のブロックフローから除外され、インラインの周りに寄せられる（＝横に並ぶ）。
@@ -233,7 +233,7 @@ const i=[{id:"block-inline",title:"ブロック要素とインライン要素の
     3) 親要素は中のフロート要素の高さを自動で包含しないため、'clearfix'（クリア用の要素や 'overflow' / '::after' テクニック）で親の高さを確保する必要がある。
 
     この手法は2カラム／3カラムレイアウトやテキストの回り込みに便利でしたが、要素の高さ計算や縦方向の配置（垂直中央揃え）などが分かりにくく、レスポンシブ設計で制約が多い点がありました。現在は Flexbox や Grid の普及により、より予測可能で柔軟な手法に置き換えられつつあります。
-  `,htmlCode:`<div class="float-container">
+  `,demos:[{subtitle:"floatレイアウト",htmlCode:`<div class="float-container">
   <div class="float-header">ヘッダー</div>
   <div class="float-sidebar">サイドバー</div>
   <div class="float-main">メインコンテンツ</div>
@@ -275,7 +275,7 @@ const i=[{id:"block-inline",title:"ブロック要素とインライン要素の
   color: white;
   padding: 15px;
   text-align: center;
-}`},{id:"float-problems",title:"floatレイアウトの問題点",description:`
+}`}]},{id:"float-problems",title:"floatレイアウトの問題点",description:`
     floatレイアウトは長年便利に使われてきましたが、いくつかの構造的・実装上の問題を抱えています。主な問題点とその原因、よく使われる対処法をまとめます。
 
     1) 親要素の高さが包含されない（高さ崩れ）
@@ -299,17 +299,17 @@ const i=[{id:"block-inline",title:"ブロック要素とインライン要素の
       - そもそも Flexbox / Grid に置き換えて、より予測可能で保守しやすいレイアウトを採用する
 
     結論として、float は現在でもテキストの回り込み等で有用ですが、ページ全体の主要レイアウトには Flexbox や Grid のほうが適している場面が多く、可読性・保守性・レスポンシブ対応の観点からは置き換えを検討すべきです。
-  `,htmlCode:`<!-- clearfixなしの問題例 -->
+  `,demos:[{subtitle:"floatレイアウトの問題点",htmlCode:`clearfixなしの問題例
 <div class="no-clearfix-container">
   <div class="float-item">Float要素1</div>
   <div class="float-item">Float要素2</div>
-  <!-- clearfixがないため、親要素の高さが0になる -->
+  clearfixがないため、親要素の高さが0になる
 </div>
 <div class="next-content">次のコンテンツ（重なってしまう）</div>
 
 <hr style="margin: 20px 0;">
 
-<!-- clearfixありの正常例 -->
+clearfixありの正常例
 <div class="clearfix-container">
   <div class="float-item">Float要素1</div>
   <div class="float-item">Float要素2</div>
@@ -350,7 +350,7 @@ const i=[{id:"block-inline",title:"ブロック要素とインライン要素の
   padding: 10px;
   margin: 10px 0;
   border: 1px solid #2196f3;
-}`,problems:["clearfixが必要で忘れやすい","レスポンシブ対応が困難","ネストした要素の高さ計算が複雑","垂直中央揃えが困難","等高カラムの実現が困難"]},{id:"position-layout",title:"positionレイアウト",description:`
+}`}],problems:["clearfixが必要で忘れやすい","レスポンシブ対応が困難","ネストした要素の高さ計算が複雑","垂直中央揃えが困難","等高カラムの実現が困難"]},{id:"position-layout",title:"positionレイアウト",description:`
     CSS の position プロパティは要素を文書フロー内でどのように配置するかを決めます。主な値とその挙動、適したユースケース、注意点をまとめます。
 
     主な値の挙動:
@@ -373,7 +373,7 @@ const i=[{id:"block-inline",title:"ブロック要素とインライン要素の
       - sticky は親コンテナの overflow や高さの影響を受けやすいです。
 
     まとめ: position 系は強力ですが乱用するとメンテナンス性とレスポンシブ性が低下します。配置が複雑になる場合は Flexbox や Grid と組み合わせ、position は補助的に使うのが現実的です。
-    `,htmlCode:`<div class="position-container">
+    `,demos:[{subtitle:"positionレイアウト",htmlCode:`<div class="position-container">
   <div class="relative-parent">
     <div class="relative-element">position: relative</div>
     <div class="absolute-element">position: absolute</div>
@@ -454,7 +454,7 @@ const i=[{id:"block-inline",title:"ブロック要素とインライン要素の
   padding: 20px;
   background-color: #f5f5f5;
   height: 400px;
-}`},{id:"position-problems",title:"positionレイアウトの問題点",description:`
+}`}]},{id:"position-problems",title:"positionレイアウトの問題点",description:`
     position プロパティを用いたレイアウト（absolute/relative/fixed/sticky）は強力ですが、実務ではいくつかの落とし穴と運用上の課題が発生しやすく、注意が必要です。主な問題点と対処を整理します。
 
     1) 文書フローから外れることによる予測不能な影響
@@ -480,14 +480,14 @@ const i=[{id:"block-inline",title:"ブロック要素とインライン要素の
       - アクセシビリティを考え、ソース順と視覚順の乖離を最小化する。
 
     まとめ: position 系は局所的なレイアウトに非常に有効ですが、ページ全体のレイアウト設計ではまず Flexbox / Grid を検討し、position は補助的に使うのが堅実です。
-    `,htmlCode:`<!-- 重なり順の問題例 -->
+    `,demos:[{subtitle:"positionレイアウトの問題点",htmlCode:`重なり順の問題例
 <div class="z-index-demo">
   <div class="layer1">Layer 1 (z-index: 1)</div>
   <div class="layer2">Layer 2 (z-index: 2)</div>
   <div class="layer3">Layer 3 (z-index: 3)</div>
 </div>
 
-<!-- レスポンシブ対応の問題例 -->
+レスポンシブ対応の問題例
 <div class="responsive-problem">
   <div class="absolute-sidebar">固定サイドバー</div>
   <div class="absolute-main">メインコンテンツ（スマホで重なってしまう）</div>
@@ -560,7 +560,7 @@ const i=[{id:"block-inline",title:"ブロック要素とインライン要素の
   padding: 15px;
   box-sizing: border-box;
   /* スマホサイズでは重なってしまう */
-}`,problems:["レスポンシブ対応が非常に困難","z-indexの管理が複雑になりがち","要素が親要素から切り離されるため影響が予測しにくい","メンテナンスが困難","通常のドキュメントフローから外れるため他要素への影響が大きい"]},{id:"flexbox-layout",title:"Flexboxレイアウト",description:`
+}`}],problems:["レスポンシブ対応が非常に困難","z-indexの管理が複雑になりがち","要素が親要素から切り離されるため影響が予測しにくい","メンテナンスが困難","通常のドキュメントフローから外れるため他要素への影響が大きい"]},{id:"flexbox-layout",title:"Flexboxレイアウト",description:`
     Flexbox は 1 次元（行 or 列）に特化したレイアウトシステムです。コンテナとアイテムの間で空間配分や整列を直感的に行え、従来の float/position に頼らない柔軟なレイアウトを実現します。
 
     主要な考え方:
@@ -578,14 +578,14 @@ const i=[{id:"block-inline",title:"ブロック要素とインライン要素の
   - 古いブラウザでは 'gap' のサポートが限定的なのでフォールバックが必要な場合がある。
 
     使いどころの例: ヘッダーのナビ、カードの横並び、ツールバー、センタリングされたレイアウトなど。
-    `,htmlCode:`<!-- 基本的なFlexboxレイアウト -->
+    `,demos:[{subtitle:"Flexboxレイアウト",htmlCode:`基本的なFlexboxレイアウト
 <div class="flex-container">
   <div class="flex-item">アイテム1</div>
   <div class="flex-item">アイテム2</div>
   <div class="flex-item">アイテム3</div>
 </div>
 
-<!-- 実用的なヘッダーレイアウト -->
+実用的なヘッダーレイアウト
 <div class="header-flex">
   <div class="logo">ロゴ</div>
   <div class="nav-flex">
@@ -595,7 +595,8 @@ const i=[{id:"block-inline",title:"ブロック要素とインライン要素の
   </div>
 </div>
 
-<!-- カード型レイアウト -->
+カード型レイアウト
+<p class="note">注: 親が Flex コンテナのため、カード要素は縦方向に stretch されて高さが揃います（内容が異なっても同じ高さに見えます）。</p>
 <div class="card-container">
   <div class="card">カード1</div>
   <div class="card">カード2<br>高さが異なる<br>コンテンツ</div>
@@ -668,7 +669,7 @@ const i=[{id:"block-inline",title:"ブロック要素とインライン要素の
   display: flex;
   align-items: center;
   justify-content: center;
-}`},{id:"grid-layout",title:"Grid Layoutレイアウト",description:`
+}`}]},{id:"grid-layout",title:"Grid Layoutレイアウト",description:`
     CSS Grid は 2 次元（行と列）を同時に扱える強力なレイアウトシステムです。ページ全体のレイアウトや複雑なグリッド構成を明示的に定義でき、直感的な領域配置が可能です。
 
     主要な考え方:
@@ -685,7 +686,7 @@ const i=[{id:"block-inline",title:"ブロック要素とインライン要素の
       - Grid の自動配置ルールや暗黙のトラックを理解していないと期待外のレイアウトになることがある。
 
     使いどころの例: 複雑なページレイアウト、カードのグリッド、レスポンシブなダッシュボードやギャラリー。
-    `,htmlCode:`<!-- 基本的なGridレイアウト -->
+    `,demos:[{subtitle:"Grid Layoutレイアウト",htmlCode:`基本的なGridレイアウト
 <div class="grid-container">
   <div class="grid-header">ヘッダー</div>
   <div class="grid-sidebar">サイドバー</div>
@@ -694,7 +695,7 @@ const i=[{id:"block-inline",title:"ブロック要素とインライン要素の
   <div class="grid-footer">フッター</div>
 </div>
 
-<!-- カードグリッドレイアウト -->
+カードグリッドレイアウト
 <div class="card-grid">
   <div class="grid-card">カード1</div>
   <div class="grid-card large">大きなカード</div>
@@ -794,7 +795,7 @@ const i=[{id:"block-inline",title:"ブロック要素とインライン要素の
   .grid-card.large {
     grid-column: span 1;
   }
-}`},{id:"flex-vs-grid",title:"Flex と Grid の使い分け",description:`
+}`}]},{id:"flex-vs-grid",title:"Flex と Grid の使い分け",description:`
     Flex と Grid はどちらも強力なレイアウト手段ですが、得意・不得意が異なります。
 
     1) 基本の棲み分け
@@ -815,7 +816,7 @@ const i=[{id:"block-inline",title:"ブロック要素とインライン要素の
       - どちらも近年のブラウザで十分にサポートされている。複雑すぎる自動配置ロジックは思わぬ reflow を招くことがあるため、極端に大量の要素を配置する場合は検証する。
 
     まとめ: “要件が1次元か2次元か” を第一判断基準にし、可読性・保守性の観点で Grid と Flex を使い分け、必要なら両者を併用して補完するのが良い設計です。
-    `,htmlCode:`<!-- Flex vs Grid の簡単なデモ -->
+    `,demos:[{subtitle:"Flex と Grid のデモ",htmlCode:`Flex vs Grid の簡単なデモ
 <div class="demo-flex">
   <div class="logo">Logo</div>
   <div class="items">
@@ -840,4 +841,4 @@ const i=[{id:"block-inline",title:"ブロック要素とインライン要素の
 .g-header { grid-area: header; background: #1976d2; color: #fff; padding: 10px; }
 .g-side { grid-area: sidebar; background: #e3f2fd; padding: 12px; }
 .g-main { grid-area: main; background: #fff; padding: 12px; border: 1px solid #ddd; }
-.g-footer { grid-area: footer; background: #424242; color: #fff; padding: 10px; text-align: center; }`,relatedItems:["flexbox-layout","grid-layout"]}];export{i as items};
+.g-footer { grid-area: footer; background: #424242; color: #fff; padding: 10px; text-align: center; }`}],relatedItems:["flexbox-layout","grid-layout"]}];export{e as items};
