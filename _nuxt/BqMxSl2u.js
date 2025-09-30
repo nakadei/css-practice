@@ -462,4 +462,4 @@ const i={id:"flex-calculation",title:"flex-grow / flex-shrink の計算",descrip
   margin: 0;
   font-size: 14px;
   color: #d84315;
-}`}],relatedItems:["flex-grow","flex-shrink","flex-basis","flexbox-flow"]};export{i as default,i as item};
+}`}],relatedItems:["flex-grow","flex-shrink","flex-basis","w3c-spec"]};export{i as default,i as item};

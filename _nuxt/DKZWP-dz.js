@@ -112,7 +112,8 @@ const e={id:"justify-content",title:"justify-content",description:`
   justify-content: center;
   font-weight: bold;
   border-radius: 8px;
-}`},{subtitle:"space-around - 周りに等しい余白",htmlCode:`<div class="justify-space-around">
+}`},{subtitle:"space-around - 周りに等しい余白",htmlCode:`<p>space-between と違うのは、最初のアイテムと最後のアイテムの外側にも余白ができる点。外側の余白:内側の余白 は 1:2</p>
+      <div class="justify-space-around">
   <div class="justify-item">1</div>
   <div class="justify-item">2</div>
   <div class="justify-item">3</div>
