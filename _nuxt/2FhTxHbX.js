@@ -1,0 +1,1 @@
+const i={id:"display-grid",title:"display: grid / inline-grid",description:"Gridコンテナを作るためのdisplayプロパティ。blockレベルとinlineレベルの違いと使い分けを学習します。",tags:["基礎","display"],type:"property"};export{i as default,i as item};

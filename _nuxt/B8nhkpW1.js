@@ -1,0 +1,1 @@
+const t={id:"auto-placement-algorithm",title:"Auto-placement Algorithm",description:"Gridの自動配置アルゴリズム。grid-auto-flowやdenseモードの挙動とその副作用を学びます。",tags:["理論","algorithm"],type:"theory"};export{t as default,t as item};

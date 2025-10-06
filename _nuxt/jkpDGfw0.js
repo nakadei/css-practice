@@ -1,0 +1,1 @@
+const t={id:"grid-template-columns",title:"grid-template-columns",description:"カラム（列）のトラックサイズを定義します。repeat()、fr、minmax()などのパターンを学びます。",tags:["プロパティ","columns"],type:"property"};export{t as default,t as item};
