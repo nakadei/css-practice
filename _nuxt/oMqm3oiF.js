@@ -1,4 +1,4 @@
-const e={id:"flex-advanced-topics",title:"flex の実践的なトピック",description:`
+const d={id:"flex-advanced-topics",title:"flex の実践的なトピック",description:`
     flex プロパティの短縮記法、デフォルト値、計算時の特殊なケースなど、実践的で重要なトピックを解説します。
 
     このページで学べること:
@@ -787,4 +787,647 @@ const e={id:"flex-advanced-topics",title:"flex の実践的なトピック",desc
   border-radius: 3px;
   font-family: 'Courier New', monospace;
   font-size: 12px;
-}`}],relatedItems:["flex-basis","flex-grow","flex-shrink","flex-calculation"]};export{e as default,e as item};
+}`},{subtitle:"min-width と max-width の影響",htmlCode:`<!-- 説明 -->
+<div class="adv-syntax-explanation">
+  <h4>flex の計算は min-width / max-width で制約される</h4>
+  <p class="adv-note">flex-shrink や flex-grow があっても、min/max の制約が優先されます</p>
+</div>
+
+<!-- Before: min-width なし -->
+<div class="adv-demo-section">
+  <h4 class="adv-demo-title">Before: min-width なし（均等に縮小）</h4>
+  <p class="adv-container-info">コンテナ幅: 300px（利用可能幅: 280px）</p>
+  
+  <div class="adv-minmax-demo no-constraint">
+    <div class="adv-minmax-item">
+      <div class="adv-item-label">A</div>
+      <div class="adv-item-code">flex: 1 1 100px</div>
+    </div>
+    <div class="adv-minmax-item">
+      <div class="adv-item-label">B</div>
+      <div class="adv-item-code">flex: 1 1 100px</div>
+    </div>
+    <div class="adv-minmax-item">
+      <div class="adv-item-label">C</div>
+      <div class="adv-item-code">flex: 1 1 100px</div>
+    </div>
+  </div>
+  <p class="adv-result-note">各93.3px（均等に縮小）</p>
+</div>
+
+<div class="adv-arrow-down">↓ Aに min-width: 120px を追加 ↓</div>
+
+<!-- After: min-width あり -->
+<div class="adv-demo-section">
+  <h4 class="adv-demo-title">After: Aに min-width: 120px（制約あり）</h4>
+  <p class="adv-container-info">コンテナ幅: 300px（利用可能幅: 280px）</p>
+  
+  <div class="adv-minmax-demo with-constraint">
+    <div class="adv-minmax-item with-min">
+      <div class="adv-item-label">A</div>
+      <div class="adv-item-code">
+        flex: 1 1 100px<br>
+        <strong>min-width: 120px</strong>
+      </div>
+    </div>
+    <div class="adv-minmax-item">
+      <div class="adv-item-label">B</div>
+      <div class="adv-item-code">flex: 1 1 100px</div>
+    </div>
+    <div class="adv-minmax-item">
+      <div class="adv-item-label">C</div>
+      <div class="adv-item-code">flex: 1 1 100px</div>
+    </div>
+  </div>
+  <p class="adv-result-note">A: 120px（制約）, B: 80px, C: 80px</p>
+</div>
+
+<!-- 計算手順 -->
+<div class="adv-calculation-steps">
+  <h4>計算の優先順位</h4>
+  
+  <ol class="adv-priority-list">
+    <li><strong>1. min-width / max-width の制約チェック</strong></li>
+    <li>2. flex-basis による基準サイズ設定</li>
+    <li>3. flex-shrink / flex-grow による調整</li>
+  </ol>
+  
+  <h4>After の計算手順:</h4>
+  <ol>
+    <li>基準サイズ合計: 100 + 100 + 100 = 300px</li>
+    <li>不足分: 300 - 280 = 20px</li>
+    <li>shrink値: 1, 1, 1（均等）</li>
+    <li>各アイテムの縮小: -6.67px ずつ</li>
+    <li>仮の最終サイズ: 93.3px, 93.3px, 93.3px</li>
+    <li><strong>⚠️ Aは min-width: 120px で制約 → 120px に固定</strong></li>
+    <li>再計算: B と C で残り 160px を分割 → 各80px</li>
+  </ol>
+  
+  <div class="adv-key-point">
+    <strong>重要なポイント:</strong>
+    <ul>
+      <li>min-width / max-width は flex の計算より優先される</li>
+      <li>制約のあるアイテムはサイズが固定され、他が調整される</li>
+      <li>レスポンシブデザインでは min-width の設定が重要</li>
+    </ul>
+  </div>
+</div>`,cssCode:`.adv-minmax-demo {
+  display: flex;
+  gap: 10px;
+  padding: 15px;
+  border: 2px solid;
+  width: 300px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+}
+
+.no-constraint {
+  background-color: #e3f2fd;
+  border-color: #2196f3;
+}
+
+.with-constraint {
+  background-color: #fff3e0;
+  border-color: #ff9800;
+}
+
+.adv-minmax-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  border-radius: 6px;
+  font-size: 12px;
+  padding: 12px 8px;
+  min-height: 80px;
+}
+
+.no-constraint .adv-minmax-item {
+  flex: 1 1 100px;
+  background-color: #2196f3;
+}
+
+.with-constraint .adv-minmax-item {
+  flex: 1 1 100px;
+  background-color: #ff9800;
+}
+
+.with-constraint .adv-minmax-item.with-min {
+  min-width: 120px;
+  background-color: #f44336;
+}
+
+.adv-minmax-item strong {
+  color: #ffeb3b;
+  font-size: 10px;
+  margin-top: 4px;
+}
+
+.adv-priority-list {
+  background-color: #fff9c4;
+  padding: 15px 15px 15px 35px;
+  border-radius: 4px;
+  margin: 10px 0 15px 0;
+  border-left: 3px solid #fbc02d;
+}
+
+.adv-priority-list li {
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #333;
+}
+
+.adv-priority-list strong {
+  color: #f57f17;
+}`},{subtitle:"gap がある場合の shrink 計算",htmlCode:`<!-- 説明 -->
+<div class="adv-syntax-explanation">
+  <h4>gap は利用可能幅から差し引かれる</h4>
+  <p class="adv-note">gap の分だけスペースが減るため、shrink の影響が大きくなります</p>
+</div>
+
+<!-- gap なし -->
+<div class="adv-demo-section">
+  <h4 class="adv-demo-title">パターン1: gap なし</h4>
+  <p class="adv-container-info">コンテナ幅: 300px（padding: 10px）</p>
+  
+  <div class="adv-gap-demo gap-none">
+    <div class="adv-gap-item">
+      <div class="adv-item-label">A</div>
+      <div class="adv-item-code">flex: 1 1 100px</div>
+    </div>
+    <div class="adv-gap-item">
+      <div class="adv-item-label">B</div>
+      <div class="adv-item-code">flex: 1 1 100px</div>
+    </div>
+    <div class="adv-gap-item">
+      <div class="adv-item-label">C</div>
+      <div class="adv-item-code">flex: 1 1 100px</div>
+    </div>
+  </div>
+  <p class="adv-result-note">各93.3px（利用可能幅: 280px）</p>
+</div>
+
+<!-- gap: 10px -->
+<div class="adv-demo-section">
+  <h4 class="adv-demo-title">パターン2: gap: 10px</h4>
+  <p class="adv-container-info">コンテナ幅: 300px（padding: 10px）</p>
+  
+  <div class="adv-gap-demo gap-10">
+    <div class="adv-gap-item">
+      <div class="adv-item-label">A</div>
+      <div class="adv-item-code">flex: 1 1 100px</div>
+    </div>
+    <div class="adv-gap-item">
+      <div class="adv-item-label">B</div>
+      <div class="adv-item-code">flex: 1 1 100px</div>
+    </div>
+    <div class="adv-gap-item">
+      <div class="adv-item-label">C</div>
+      <div class="adv-item-code">flex: 1 1 100px</div>
+    </div>
+  </div>
+  <p class="adv-result-note">各86.7px（利用可能幅: 280px - 20px = 260px）</p>
+</div>
+
+<!-- gap: 20px -->
+<div class="adv-demo-section">
+  <h4 class="adv-demo-title">パターン3: gap: 20px</h4>
+  <p class="adv-container-info">コンテナ幅: 300px（padding: 10px）</p>
+  
+  <div class="adv-gap-demo gap-20">
+    <div class="adv-gap-item">
+      <div class="adv-item-label">A</div>
+      <div class="adv-item-code">flex: 1 1 100px</div>
+    </div>
+    <div class="adv-gap-item">
+      <div class="adv-item-label">B</div>
+      <div class="adv-item-code">flex: 1 1 100px</div>
+    </div>
+    <div class="adv-gap-item">
+      <div class="adv-item-label">C</div>
+      <div class="adv-item-code">flex: 1 1 100px</div>
+    </div>
+  </div>
+  <p class="adv-result-note">各80px（利用可能幅: 280px - 40px = 240px）</p>
+</div>
+
+<!-- 計算の説明 -->
+<div class="adv-calculation-steps">
+  <h4>gap を考慮した計算式</h4>
+  
+  <div class="adv-formula-box">
+    <code>利用可能幅 = コンテナ幅 - padding左右 - gap × (アイテム数 - 1)</code>
+  </div>
+  
+  <table class="adv-gap-table">
+    <thead>
+      <tr>
+        <th>gap</th>
+        <th>gap合計</th>
+        <th>利用可能幅</th>
+        <th>各アイテム</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>0px</td>
+        <td>0px</td>
+        <td>280px</td>
+        <td>93.3px</td>
+      </tr>
+      <tr>
+        <td>10px</td>
+        <td>20px (10×2)</td>
+        <td>260px</td>
+        <td>86.7px</td>
+      </tr>
+      <tr>
+        <td>20px</td>
+        <td>40px (20×2)</td>
+        <td>240px</td>
+        <td>80px</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <div class="adv-key-point">
+    <strong>重要なポイント:</strong>
+    <ul>
+      <li>gap は <code>gap × (アイテム数 - 1)</code> で計算される</li>
+      <li>gap が大きいほど、flex-shrink の影響が大きくなる</li>
+      <li>gap はアイテム間のみ（最初と最後には入らない）</li>
+    </ul>
+  </div>
+</div>`,cssCode:`.adv-gap-demo {
+  display: flex;
+  padding: 10px;
+  border: 2px solid #9c27b0;
+  width: 300px;
+  border-radius: 6px;
+  background-color: #f3e5f5;
+  margin-bottom: 8px;
+}
+
+.gap-none {
+  gap: 0;
+  border-color: #2196f3;
+  background-color: #e3f2fd;
+}
+
+.gap-10 {
+  gap: 10px;
+  border-color: #ff9800;
+  background-color: #fff3e0;
+}
+
+.gap-20 {
+  gap: 20px;
+  border-color: #f44336;
+  background-color: #ffebee;
+}
+
+.adv-gap-item {
+  display: flex;
+  flex: 1 1 100px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  border-radius: 6px;
+  font-size: 12px;
+  padding: 12px 8px;
+  min-height: 70px;
+}
+
+.gap-none .adv-gap-item {
+  background-color: #2196f3;
+}
+
+.gap-10 .adv-gap-item {
+  background-color: #ff9800;
+}
+
+.gap-20 .adv-gap-item {
+  background-color: #f44336;
+}
+
+.adv-formula-box {
+  background-color: #263238;
+  padding: 15px;
+  border-radius: 4px;
+  margin: 15px 0;
+  overflow-x: auto;
+}
+
+.adv-formula-box code {
+  color: #aed581;
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.adv-gap-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 15px 0;
+  font-size: 13px;
+}
+
+.adv-gap-table th,
+.adv-gap-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+.adv-gap-table th {
+  background-color: #f3e5f5;
+  color: #7b1fa2;
+  font-weight: bold;
+}
+
+.adv-gap-table tbody tr:nth-child(1) {
+  background-color: #e3f2fd;
+}
+
+.adv-gap-table tbody tr:nth-child(2) {
+  background-color: #fff3e0;
+}
+
+.adv-gap-table tbody tr:nth-child(3) {
+  background-color: #ffebee;
+}`},{subtitle:"padding がある場合の計算（box-sizing の重要性）",htmlCode:`<!-- 説明 -->
+<div class="adv-syntax-explanation">
+  <h4>box-sizing で padding の扱いが変わる</h4>
+  <p class="adv-note">content-box と border-box で計算結果が大きく異なります</p>
+</div>
+
+<!-- Before: box-sizing: content-box（デフォルト） -->
+<div class="adv-demo-section">
+  <h4 class="adv-demo-title">Before: box-sizing: content-box（⚠️ はみ出す）</h4>
+  <p class="adv-container-info">コンテナ幅: 300px、各アイテム padding: 10px</p>
+  
+  <div class="adv-boxsizing-demo content-box-demo">
+    <div class="adv-boxsizing-item content-box-item">
+      <div class="adv-item-label">A</div>
+      <div class="adv-item-code">
+        flex: 1<br>
+        padding: 10px<br>
+        <small>content-box</small>
+      </div>
+    </div>
+    <div class="adv-boxsizing-item content-box-item">
+      <div class="adv-item-label">B</div>
+      <div class="adv-item-code">
+        flex: 1<br>
+        padding: 10px<br>
+        <small>content-box</small>
+      </div>
+    </div>
+    <div class="adv-boxsizing-item content-box-item">
+      <div class="adv-item-label">C</div>
+      <div class="adv-item-code">
+        flex: 1<br>
+        padding: 10px<br>
+        <small>content-box</small>
+      </div>
+    </div>
+  </div>
+  <p class="adv-result-note adv-error">❌ 最終サイズ: 各113.3px（93.3 + 20） → はみ出す！</p>
+</div>
+
+<div class="adv-arrow-down">↓ box-sizing を border-box に変更 ↓</div>
+
+<!-- After: box-sizing: border-box -->
+<div class="adv-demo-section">
+  <h4 class="adv-demo-title">After: box-sizing: border-box（✅ 収まる）</h4>
+  <p class="adv-container-info">コンテナ幅: 300px、各アイテム padding: 10px</p>
+  
+  <div class="adv-boxsizing-demo border-box-demo">
+    <div class="adv-boxsizing-item border-box-item">
+      <div class="adv-item-label">A</div>
+      <div class="adv-item-code">
+        flex: 1<br>
+        padding: 10px<br>
+        <small>border-box</small>
+      </div>
+    </div>
+    <div class="adv-boxsizing-item border-box-item">
+      <div class="adv-item-label">B</div>
+      <div class="adv-item-code">
+        flex: 1<br>
+        padding: 10px<br>
+        <small>border-box</small>
+      </div>
+    </div>
+    <div class="adv-boxsizing-item border-box-item">
+      <div class="adv-item-label">C</div>
+      <div class="adv-item-code">
+        flex: 1<br>
+        padding: 10px<br>
+        <small>border-box</small>
+      </div>
+    </div>
+  </div>
+  <p class="adv-result-note adv-success">✅ 最終サイズ: 各93.3px（padding込み） → ぴったり収まる</p>
+</div>
+
+<!-- 計算の違い -->
+<div class="adv-calculation-steps">
+  <h4>box-sizing による計算の違い</h4>
+  
+  <div class="adv-comparison-grid">
+    <div class="adv-comparison-col content-box-col">
+      <h5>content-box の場合</h5>
+      <ol>
+        <li>flex計算: 各93.3px（コンテンツ幅）</li>
+        <li>padding追加: +20px (10px × 2)</li>
+        <li>最終サイズ: 113.3px × 3 = 340px</li>
+        <li><strong class="error">❌ 280px に収まらない（60px超過）</strong></li>
+      </ol>
+      <div class="visual-box content-box-visual">
+        <div class="box-part padding">p</div>
+        <div class="box-part content">content: 93.3px</div>
+        <div class="box-part padding">p</div>
+        <div class="box-total">合計: 113.3px</div>
+      </div>
+    </div>
+    
+    <div class="adv-comparison-col border-box-col">
+      <h5>border-box の場合</h5>
+      <ol>
+        <li>flex計算: 各93.3px（全体幅）</li>
+        <li>padding含む: 93.3px の中に padding も含む</li>
+        <li>コンテンツ幅: 73.3px (93.3 - 20)</li>
+        <li><strong class="success">✅ 280px にぴったり収まる</strong></li>
+      </ol>
+      <div class="visual-box border-box-visual">
+        <div class="box-wrapper">
+          <div class="box-part padding-small">p</div>
+          <div class="box-part content-small">content: 73.3px</div>
+          <div class="box-part padding-small">p</div>
+        </div>
+        <div class="box-total">合計: 93.3px</div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="adv-key-point">
+    <strong>ベストプラクティス:</strong>
+    <ul>
+      <li>flexアイテムには <code>box-sizing: border-box</code> を設定すべき</li>
+      <li>グローバルに設定することを推奨: <code>*, *::before, *::after { box-sizing: border-box; }</code></li>
+      <li>content-box（デフォルト）は直感的でなく、バグの原因になりやすい</li>
+    </ul>
+  </div>
+</div>`,cssCode:`.adv-boxsizing-demo {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  border: 2px solid;
+  width: 300px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  overflow: visible;
+}
+
+.content-box-demo {
+  background-color: #ffebee;
+  border-color: #f44336;
+}
+
+.border-box-demo {
+  background-color: #e8f5e9;
+  border-color: #4caf50;
+}
+
+.adv-boxsizing-item {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  border-radius: 6px;
+  font-size: 11px;
+  min-height: 70px;
+}
+
+.content-box-item {
+  box-sizing: content-box;
+  padding: 10px;
+  background-color: #f44336;
+}
+
+.border-box-item {
+  box-sizing: border-box;
+  padding: 10px;
+  background-color: #4caf50;
+}
+
+.adv-error {
+  color: #d32f2f !important;
+  font-weight: bold;
+}
+
+.adv-success {
+  color: #388e3c !important;
+  font-weight: bold;
+}
+
+.content-box-col {
+  background-color: #ffebee;
+  border: 2px solid #f44336;
+}
+
+.border-box-col {
+  background-color: #e8f5e9;
+  border: 2px solid #4caf50;
+}
+
+.content-box-col h5 {
+  color: #d32f2f;
+  border-bottom-color: #f44336;
+}
+
+.border-box-col h5 {
+  color: #388e3c;
+  border-bottom-color: #4caf50;
+}
+
+.error {
+  color: #d32f2f;
+}
+
+.success {
+  color: #388e3c;
+}
+
+.visual-box {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: white;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+.content-box-visual {
+  border-color: #f44336;
+}
+
+.border-box-visual {
+  border-color: #4caf50;
+}
+
+.box-wrapper {
+  display: flex;
+  border: 2px dashed #4caf50;
+  border-radius: 3px;
+}
+
+.box-part {
+  padding: 8px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.box-part.padding {
+  background-color: #ffcdd2;
+  color: #c62828;
+  flex: 0 0 30px;
+}
+
+.box-part.content {
+  background-color: #e3f2fd;
+  color: #1565c0;
+  flex: 1;
+}
+
+.box-part.padding-small {
+  background-color: #ffcdd2;
+  color: #c62828;
+  flex: 0 0 20px;
+  font-size: 10px;
+}
+
+.box-part.content-small {
+  background-color: #e3f2fd;
+  color: #1565c0;
+  flex: 1;
+}
+
+.box-total {
+  margin-top: 8px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: bold;
+  color: #666;
+  padding: 5px;
+  background-color: #f5f5f5;
+  border-radius: 3px;
+}`}],relatedItems:["flex-basis","flex-grow","flex-shrink","flex-calculation"]};export{d as default,d as item};
